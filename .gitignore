@@ -6,3 +6,5 @@ images/
 resized/
 
 artists.csv
+
+.env
