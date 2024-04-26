@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}All Artworks - Museum App{% endblock %}
+
+{% block content %}
+<h2>All Artworks</h2>
+<ul>
+    {% for artwork in artworks %}
+    <li><a href="{{ url_for('artwork_detail', artwork_id=artwork.id) }}">{{ artwork.title }}</a> by <a href="{{ url_for('artist_detail', artist_id=artwork.artist_id) }}">{{ artwork.artist.name }}</a></li>
+    {% endfor %}
+</ul>
+{% endblock %}

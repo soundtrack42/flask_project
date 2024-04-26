@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ artist.name }} - Museum App{% endblock %}
+
+{% block content %}
+<h2>{{ artist.name }}</h2>
+<p>Genre: {{ artist.genre }}</p>
+<p>Biography: {{ artist.bio }}</p>
+<h3>Artworks</h3>
+<ul>
+    {% for artwork in artworks %}
+    <li><a href="{{ url_for('artwork_detail', artwork_id=artwork.id) }}">{{ artwork.title }}</a></li>
+    {% endfor %}
+</ul>
+{% endblock %}
