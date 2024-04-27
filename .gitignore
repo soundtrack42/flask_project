@@ -8,3 +8,5 @@ resized/
 artists.csv
 
 .env
+
+app/__pycache__
