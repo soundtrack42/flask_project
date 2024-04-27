@@ -4,26 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Museum App{% endblock %}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <header>
-        <h1>Museum App</h1>
+<body class="bg-gray-50 text-gray-900">
+    <header class="bg-white shadow">
+        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+            <h1 class="text-3xl font-bold leading-tight text-gray-900">Museum App</h1>
+        </div>
         <nav>
-            <ul>
-                <li><a href="{{ url_for('home') }}">Home</a></li>
-                <li><a href="{{ url_for('all_artworks') }}">All Artworks</a></li>
-                <li><a href="{{ url_for('historic_artworks') }}">Historic Artworks</a></li>
-                <li><a href="{{ url_for('account') }}">My Account</a></li>
-                <li><a href="{{ url_for('logout') }}" method="post">Logout</a></li>
+            <ul class="flex space-x-4 p-4">
+                <li><a href="{{ url_for('home') }}" class="text-blue-500 hover:text-blue-700">Home</a></li>
+                <li><a href="{{ url_for('all_artworks') }}" class="text-blue-500 hover:text-blue-700">All Artworks</a></li>
+                <li><a href="{{ url_for('historic_artworks') }}" class="text-blue-500 hover:text-blue-700">Historic Artworks</a></li>
+                <li><a href="{{ url_for('account') }}" class="text-blue-500 hover:text-blue-700">My Account</a></li>
+                <li><a href="{{ url_for('logout') }}" method="post" class="text-blue-500 hover:text-blue-700">Logout</a></li>
             </ul>
         </nav>
     </header>
-    <main>
+    <div class="button-strip py-4 text-center">
+        <button onclick="window.location.href='{{ url_for('historic_artworks') }}'" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Historic Artworks</button>
+        <button onclick="window.location.href='{{ url_for('all_artworks') }}'" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">All Artworks</button>
+        <button onclick="window.location.href='{{ url_for('account') }}'" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">My Account</button>
+    </div>
+    <main class="mb-auto py-6">
         {% block content %}{% endblock %}
     </main>
-    <footer>
-        <p>© 2024 Museum App. All rights reserved.</p>
+    <footer class="bg-gray-200 text-center p-4 sticky bottom-0">
+        <p class="text-gray-700">© 2024 Museum App. All rights reserved.</p>
     </footer>
 </body>
 </html>

@@ -6,7 +6,6 @@ from . import bcrypt  # Import bcrypt configured in your __init__.py
 def init_routes(app):
 
     @app.route('/')
-    @login_required
     def home():
         return render_template('home.html', user=current_user)
 
@@ -48,6 +47,23 @@ def init_routes(app):
                 error = "Invalid username or password."
                 return render_template('login.html', error=error)
         return render_template('login.html')
+
+    @app.route('/signup', methods=['GET', 'POST'])
+    def signup():
+        if request.method == 'POST':
+            username = request.form.get('username')
+            password = request.form.get('password')
+            bio = request.form.get('bio', None)
+            if User.query.filter_by(username=username).first():
+                flash('Username already exists')
+            else:
+                hashed_password = bcrypt.generate_password_hash(password).decode('utf-8')
+                new_user = User(username=username, password=hashed_password, bio=bio)
+                db.session.add(new_user)
+                db.session.commit()
+                flash('User successfully registered. You can now log in.')
+                return redirect(url_for('login'))
+        return render_template('signup.html')
 
     @app.route('/logout', methods=['POST'])
     @login_required
