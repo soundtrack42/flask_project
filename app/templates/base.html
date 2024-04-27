@@ -17,14 +17,20 @@
                 <li><a href="{{ url_for('all_artworks') }}" class="text-blue-500 hover:text-blue-700">All Artworks</a></li>
                 <li><a href="{{ url_for('historic_artworks') }}" class="text-blue-500 hover:text-blue-700">Historic Artworks</a></li>
                 <li><a href="{{ url_for('account') }}" class="text-blue-500 hover:text-blue-700">My Account</a></li>
-                <li><a href="{{ url_for('logout') }}" method="post" class="text-blue-500 hover:text-blue-700">Logout</a></li>
+                <li>
+                    <form action="{{ url_for('logout') }}" method="post" style="display: inline;">
+                        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                            Logout
+                        </button>
+                    </form>
+                </li>
             </ul>
         </nav>
     </header>
     <div class="button-strip py-4 text-center">
-        <button onclick="window.location.href='{{ url_for('historic_artworks') }}'" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Historic Artworks</button>
-        <button onclick="window.location.href='{{ url_for('all_artworks') }}'" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">All Artworks</button>
-        <button onclick="window.location.href='{{ url_for('account') }}'" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">My Account</button>
+        <a href="{{ url_for('historic_artworks') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded inline-block">Historic Artworks</a>
+        <a href="{{ url_for('all_artworks') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded inline-block">All Artworks</a>
+        <a href="{{ url_for('account') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded inline-block">My Account</a>
     </div>
     <main class="mb-auto py-6">
         {% block content %}{% endblock %}
