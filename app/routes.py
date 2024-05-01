@@ -1,4 +1,4 @@
-from flask import render_template, redirect, url_for, jsonify, request
+from flask import render_template, redirect, url_for, jsonify, request, flash
 from flask_login import login_required, current_user, login_user, logout_user
 from .models import User, Artist, Artwork, db  # Ensure all necessary models are defined
 from . import bcrypt  # Import bcrypt configured in your __init__.py
@@ -42,10 +42,9 @@ def init_routes(app):
             user = User.query.filter_by(username=username).first()
             if user and bcrypt.check_password_hash(user.password, password):
                 login_user(user)
-                return redirect(url_for('home'))
+                return redirect(url_for('all_artwork'))
             else:
-                error = "Invalid username or password."
-                return render_template('login.html', error=error)
+                flash('Invalid username or password.', 'error')
         return render_template('login.html')
 
     @app.route('/signup', methods=['GET', 'POST'])
