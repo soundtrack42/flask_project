@@ -13,8 +13,7 @@
         </div>
         <nav>
             <ul class="flex space-x-4 p-4">
-                <li><a href="{{ url_for('home') }}" class="text-blue-500 hover:text-blue-700">Home</a></li>
-                <li><a href="{{ url_for('all_artworks') }}" class="text-blue-500 hover:text-blue-700">All Artworks</a></li>
+                <li><a href="{{ url_for('user_artworks') }}" class="text-blue-500 hover:text-blue-700">All user Artworks</a></li>
                 <li><a href="{{ url_for('historic_artworks') }}" class="text-blue-500 hover:text-blue-700">Historic Artworks</a></li>
                 <li><a href="{{ url_for('account') }}" class="text-blue-500 hover:text-blue-700">My Account</a></li>
                 <li>
@@ -27,11 +26,6 @@
             </ul>
         </nav>
     </header>
-    <div class="button-strip py-4 text-center">
-        <a href="{{ url_for('historic_artworks') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded inline-block">Historic Artworks</a>
-        <a href="{{ url_for('all_artworks') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded inline-block">All Artworks</a>
-        <a href="{{ url_for('account') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded inline-block">My Account</a>
-    </div>
     <main class="mb-auto py-6">
         {% block content %}{% endblock %}
     </main>

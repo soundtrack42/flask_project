@@ -3,3 +3,10 @@
 {% block title %}My Account - Museum App{% endblock %}
 
 {% block content %}
+
+{% if not current_user.users_as_artists %}
+    <p>You are not yet registered as an artist.</p>
+    <a href="{{ url_for('become_artist') }}">Become an Artist</a>
+{% else %}
+    <p>You are already registered as an artist.</p>
+{% endif %}

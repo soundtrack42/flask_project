@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Become an Artist</h2>
+<form method="POST" action="{{ url_for('become_artist') }}">
+    <label for="artist_name">Artist Name:</label>
+    <input type="text" id="artist_name" name="artist_name" required>
+    
+    <label for="genre">Genre:</label>
+    <input type="text" id="genre" name="genre">
+    
+    <label for="nationality">Nationality:</label>
+    <input type="text" id="nationality" name="nationality" required>
+    
+    <label for="bio">Bio:</label>
+    <textarea id="bio" name="bio"></textarea>
+    
+    <button type="submit">Register as Artist</button>
+</form>
+{% endblock %}

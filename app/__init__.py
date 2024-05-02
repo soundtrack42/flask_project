@@ -5,6 +5,7 @@ from flask_login import LoginManager
 import os
 from dotenv import load_dotenv
 
+# Initialize extensions
 db = SQLAlchemy()
 bcrypt = Bcrypt()
 login_manager = LoginManager()
@@ -25,19 +26,18 @@ def create_app():
     login_manager.init_app(app)
     login_manager.login_view = 'login'
 
-    from .models import User  # Import User model here
+    return app
 
-    @login_manager.user_loader
-    def load_user(user_id):
-        return User.query.get(int(user_id))  # Adjust according to your user ID type if necessary
-
+def setup_app(app):
+    """Perform setup after app and db have been initialized."""
     with app.app_context():
-        # Import models
-        from . import models
-        db.create_all()  # Create database tables for our models
-
-        # Import and initialize routes
+        # Import here to avoid circular imports
+        from .models import User  # Import User model here
         from .routes import init_routes
-        init_routes(app)  # Setup routes for the application
 
-        return app
+        @login_manager.user_loader
+        def load_user(user_id):
+            return User.query.get(int(user_id))  # Adjust according to your user ID type if necessary
+
+        db.create_all()  # Create database tables for our models
+        init_routes(app)  # Setup routes for the application

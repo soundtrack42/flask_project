@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Artist Details{% endblock %}
+
+{% block content %}
+<div class="container mx-auto p-5">
+    <h2 class="text-xl font-bold text-gray-800 mb-4">{{ artist.full_name }}</h2>
+    <p>Nationality: {{ artist.nationality }}</p>
+    <p>Bio: {{ artist.bio }}</p>
+    <h3 class="text-lg font-semibold mt-4 mb-2">Artworks</h3>
+    <div class="grid grid-cols-3 gap-4">
+        {% for artwork in artist.artworks %}
+        <div class="bg-white p-4 shadow rounded-lg">
+            <h4>{{ artwork.painting_name }}</h4>
+            <a href="{{ url_for('historic_artwork_detail', artwork_id=artwork.id) }}" class="text-blue-500 hover:text-blue-700">View details</a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
