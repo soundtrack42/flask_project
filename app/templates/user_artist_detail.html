@@ -1,15 +1,30 @@
 {% extends 'base.html' %}
 
-{% block title %}{{ artist.name }} - Museum App{% endblock %}
+{% block title %}{{ artist.artist_name }} - Artist Details{% endblock %}
 
 {% block content %}
-<h2>{{ artist.name }}</h2>
-<p>Genre: {{ artist.genre }}</p>
-<p>Biography: {{ artist.bio }}</p>
-<h3>Artworks</h3>
-<ul>
-    {% for artwork in artworks %}
-    <li><a href="{{ url_for('artwork_detail', artwork_id=artwork.id) }}">{{ artwork.title }}</a></li>
-    {% endfor %}
-</ul>
+<div class="container mx-auto p-5">
+    <div class="flex items-start justify-between mb-4">
+        <div>
+            <h2 class="text-xl font-bold text-gray-800">{{ artist.artist_name }}</h2>
+            <p>Genre: {{ artist.genre }}</p>
+            <p>Nationality: {{ artist.nationality }}</p>
+            <p>Bio: {{ artist.bio }}</p>
+        </div>
+        {% if current_user.id == artist.id_user %}
+            <!-- Button is aligned with the artist details -->
+            <a href="{{ url_for('upload_artwork', artist_user_id=current_user.id) }}" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded self-start">Add New Artwork</a>
+        {% endif %}
+    </div>
+    <h3 class="text-lg font-semibold">Your Artworks</h3>
+    <div class="grid grid-cols-3 gap-4">
+        {% for artwork in artist.artworks_user %}
+        <div class="bg-white p-4 shadow rounded-lg">
+            <h4>{{ artwork.painting_name }}</h4>
+            <a href="{{ url_for('user_artwork', artist_user_id=artwork.artist_user_id, painting_name=artwork.painting_name) }}" class="text-blue-500 hover:text-blue-700">View details</a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
 {% endblock %}
+

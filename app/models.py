@@ -8,7 +8,6 @@ class User(db.Model):
     bio = db.Column(db.Text, nullable=True)
     username = db.Column(db.String(255), nullable=False, unique=True)
     password = db.Column(db.String(255), nullable=False)
-    likes = relationship('Like', backref='user')
     users_as_artists = relationship('UsersAsArtist', backref='user', uselist=False)
 
     @property
@@ -39,22 +38,10 @@ class Artist(db.Model):
     number_paintings = db.Column(db.Integer, default=0)
     artworks = relationship('Artwork', backref='artist')
 
-class Like(db.Model):
-    __tablename__ = 'likes'
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), primary_key=True)
-    painting_name = db.Column(db.String(255), primary_key=True)
-    artist_id = db.Column(db.Integer, primary_key=True)
-    timestamp = db.Column(db.DateTime, default=db.func.current_timestamp())
-
-    __table_args__ = (
-        db.ForeignKeyConstraint(['painting_name', 'artist_id'], ['artworks.painting_name', 'artworks.artist_id']),
-    )
-
 class Artwork(db.Model):
     __tablename__ = 'artworks'
     painting_name = db.Column(db.String(255), primary_key=True)
     artist_id = db.Column(db.Integer, db.ForeignKey('artists.id'), primary_key=True)
-    likes = relationship('Like', backref='artwork')
 
 class UsersAsArtist(db.Model):
     __tablename__ = 'users_as_artist'
@@ -69,15 +56,3 @@ class ArtworksUser(db.Model):
     __tablename__ = 'artworks_user'
     painting_name = db.Column(db.String(255), primary_key=True)
     artist_user_id = db.Column(db.Integer, db.ForeignKey('users_as_artist.id_user'), primary_key=True)
-    likes_artists_users = relationship('LikesArtistsUser', backref='artworks_user')
-
-class LikesArtistsUser(db.Model):
-    __tablename__ = 'likes_artists_user'
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), primary_key=True)
-    painting_name = db.Column(db.String(255), primary_key=True)
-    artist_user_id = db.Column(db.Integer, primary_key=True)
-    timestamp = db.Column(db.DateTime, default=db.func.current_timestamp())
-
-    __table_args__ = (
-        db.ForeignKeyConstraint(['painting_name', 'artist_user_id'], ['artworks_user.painting_name', 'artworks_user.artist_user_id']),
-    )

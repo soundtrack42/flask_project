@@ -1,11 +1,13 @@
 {% extends "base.html" %}
 
-{% block title %}Artwork Details{% endblock %}
+{% block title %}{{ artwork.painting_name }} - Artwork Details{% endblock %}
 
 {% block content %}
 <div class="container mx-auto p-5">
     <h2 class="text-xl font-bold text-gray-800 mb-4">{{ artwork.painting_name }}</h2>
-    <p>{{ artwork.description }}</p>
     <p>Artist: <a href="{{ url_for('historic_artist_detail', artist_id=artwork.artist_id) }}" class="text-blue-500 hover:text-blue-700">{{ artwork.artist.full_name }}</a></p>
+    {% if file_system_name %}
+        <img src="{{ url_for('static', filename='images/images/' ~ file_system_name ~ '/' ~ artwork.painting_name) }}" alt="{{ artwork.painting_name }}" style="max-width: 100%;">
+    {% endif %}
 </div>
 {% endblock %}

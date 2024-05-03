@@ -3,10 +3,12 @@
 {% block title %}My Account - Museum App{% endblock %}
 
 {% block content %}
-
-{% if not current_user.users_as_artists %}
-    <p>You are not yet registered as an artist.</p>
-    <a href="{{ url_for('become_artist') }}">Become an Artist</a>
-{% else %}
-    <p>You are already registered as an artist.</p>
-{% endif %}
+<div class="container mx-auto p-5">
+    {% if not current_user.users_as_artists %}
+        <p>You are not yet registered as an artist.</p>
+        <a href="{{ url_for('become_artist') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-0.5 px-2 rounded">Become an Artist</a>
+    {% else %}
+        <p>You are already registered as an artist. View your <a href="{{ url_for('user_artist_detail', artist_user_id=current_user.users_as_artists.id_user) }}" class="text-blue-500 hover:text-blue-700">artist profile</a>.</p>
+    {% endif %}
+</div>
+{% endblock %}
