@@ -10,5 +10,3 @@ artists.csv
 .env
 
 __pycache__/
-
-static/
