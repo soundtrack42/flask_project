@@ -78,6 +78,7 @@ CREATE TABLE artworks_user (
     PRIMARY KEY (artist_user_id, painting_name),
     FOREIGN KEY (artist_user_id) REFERENCES users_as_artist(id_user)
 );
+```
 
 ## Sviluppo del Software
 ### Tutto lo sviluppo del progetto è stato eseguito utilizzando git ed effettuando commit ad ogni sessione di scrittura effettuata.
