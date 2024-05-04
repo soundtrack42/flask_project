@@ -1,12 +1,4 @@
 
 .venv/
 
-images/
-
-resized/
-
-artists.csv
-
-.env
-
 __pycache__/
