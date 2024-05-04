@@ -104,11 +104,12 @@ def init_routes(app):
         if request.method == 'POST':
             username = request.form['username']
             password = request.form['password']
+            bio = request.form['bio']
             if User.query.filter_by(username=username).first():
                 flash('Username already exists', 'error')
             else:
                 hashed_password = bcrypt.generate_password_hash(password).decode('utf-8')
-                new_user = User(username=username, password=hashed_password)
+                new_user = User(username=username, password=hashed_password, bio=bio)
                 db.session.add(new_user)
                 db.session.commit()
                 flash('Registration successful! Please log in.', 'success')
@@ -183,3 +184,20 @@ def init_routes(app):
             return redirect(url_for('user_artist_detail', artist_user_id=new_artist.id_user))
 
         return render_template('artist_registration.html')
+
+    @app.route('/delete-artwork/<int:artist_user_id>/<string:painting_name>', methods=['POST'])
+    @login_required
+    def delete_artwork(artist_user_id, painting_name):
+        # Check if the user has the right to delete the artwork
+        if current_user.id != artist_user_id and current_user.id != 3:
+            abort(403)  # Forbidden access
+
+        artwork = ArtworksUser.query.filter_by(artist_user_id=artist_user_id, painting_name=painting_name).first()
+        if artwork:
+            db.session.delete(artwork)
+            db.session.commit()
+            flash('Artwork deleted successfully.', 'info')
+        else:
+            flash('Artwork not found.', 'error')
+
+        return redirect(url_for('user_artist_detail', artist_user_id=artist_user_id))
