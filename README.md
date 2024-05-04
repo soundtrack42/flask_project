@@ -82,7 +82,7 @@ CREATE TABLE artworks_user (
 
 ## Sviluppo del Software
 Tutto lo sviluppo del progetto è stato eseguito utilizzando git ed effettuando commit ad ogni sessione di scrittura effettuata.
-All'inizio dello sviluppo ho definito degli issues che andavano a descrivere i requisiti dell'applicazione finale e annotare dei promemoria per le idee e le problematiche in cui incorrevo o prevedevo di incorrere. Ora ho tradotto i requisiti dell'applicazione in user stories (in modo da renderli chiari).
+All'inizio dello sviluppo ho definito degli issues che andavano a descrivere i requisiti dell'applicazione finale e annotare dei promemoria per le idee e le problematiche in cui incorrevo o prevedevo di incorrere. Ora ho tradotto i requisiti dell'applicazione in user stories (in modo da renderli chiari ed evidenti).
 
 ### User Stories
 
