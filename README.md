@@ -1,7 +1,7 @@
 # Documentazione Tecnica del Sito di Esposizione d'Arte
 
 ## Introduzione
-Il sito web si propone come una piattaforma espositiva per opere d'arte, consentendo la visualizzazione di opere sia di artisti storici che contemporanei, inclusi gli utenti registrati che desiderano esporre le loro creazioni. Le funzionalità principali includono la visualizzazione delle opere, la ricerca basata su vari criteri come l'artista, il genere e l'epoca, e la possibilità per gli utenti di caricare e gestire le proprie opere d'arte.
+Il sito web si propone come una piattaforma espositiva per opere d'arte, consentendo la visualizzazione di opere sia di artisti storici che contemporanei, inclusi gli utenti registrati che desiderano esporre le loro creazioni. Le funzionalità principali includono la visualizzazione delle opere e la possibilità per gli utenti di caricare e gestire le proprie opere d'arte.
 
 ## Tecnologie Utilizzate
 - **Python**: Linguaggio di programmazione principale usato per lo sviluppo del backend.
