@@ -81,7 +81,7 @@ CREATE TABLE artworks_user (
 ```
 
 ## Sviluppo del Software
-### Tutto lo sviluppo del progetto è stato eseguito utilizzando git ed effettuando commit ad ogni sessione di scrittura effettuata.
+Tutto lo sviluppo del progetto è stato eseguito utilizzando git ed effettuando commit ad ogni sessione di scrittura effettuata.
 All'inizio dello sviluppo ho definito degli issues che andavano a descrivere i requisiti dell'applicazione finale e annotare dei promemoria per le idee e le problematiche in cui incorrevo o prevedevo di incorrere. Ora ho tradotto i requisiti dell'applicazione in user stories (in modo da renderli chiari).
 
 ### User Stories
@@ -121,8 +121,8 @@ All'inizio dello sviluppo ho definito degli issues che andavano a descrivere i r
 - **What**: Aggiungere nuovi quadri al proprio portfolio sul sito
 - **How**: Utilizzando un form specifico nella propria area utente per caricare immagini delle opere, insieme a titolo, descrizione, e altre informazioni pertinenti.
 
-Deploy
+## Deploy
 Il deploy è stato realizzato su PythonAnywhere, una piattaforma cloud che supporta applicazioni Python/Flask, offrendo un ambiente di hosting facile da configurare e gestire.
 
-Conclusioni
+## Conclusioni
 Il sito è progettato per essere estensibile e adattabile, con la possibilità di aggiungere nuove funzionalità come i like alle opere, integrazioni social per condividere opere su piattaforme esterne, e miglioramenti dell'interfaccia utente per dispositivi mobili (e in generale per renderla più aderente alle foto delle opere d'arte).
