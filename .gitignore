@@ -5,4 +5,4 @@ __pycache__/
 
 .env
 
-./images/images/
+/images/images/
